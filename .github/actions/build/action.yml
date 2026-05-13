@@ -34,6 +34,10 @@ runs:
       shell: bash
       run: ./builder/steps/plot_gerbers_and_images.sh
 
+    - name: Create QMK/Vial keymap
+      shell: bash
+      run: ./builder/steps/update_qmk_jsons.sh
+
     - name: Build QMK Firmware
       uses: docker://ghcr.io/qmk/qmk_cli
       with:

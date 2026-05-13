@@ -118,7 +118,7 @@ def get_switches(board_path, side):
     return positions
 
 
-def output_vial(left, right):
+def build_vial_layout(left, right):
     sorted_switches = sorted(left + right, key=lambda s: s.y)
     grouped_lines = {y: list(switches) for y, switches in groupby(
         sorted_switches, key=lambda s: s.y)}
@@ -146,12 +146,18 @@ def output_vial(left, right):
         vial_layout.append(row)
         prev_y = y
 
+    return vial_layout
+
+
+def output_vial(left, right):
+    vial_layout = build_vial_layout(left, right)
+
     # "pretty print" each entry to own row
     json_blobs = map(json.dumps, vial_layout)
     print("[\n  %s\n]" % ",\n  ".join(json_blobs))
 
 
-def output_qmk(left, right):
+def build_qmk_layout(left, right):
     def entry(s): return {
         "label": f"{s.row},{s.col}",
         "matrix": [s.row, s.col],
@@ -173,9 +179,32 @@ def output_qmk(left, right):
     entries = [entry(s) for pair in zip(sorted_left, sorted_right)
                for (_, group) in pair for s in group]
 
+    return entries
+
+
+def output_qmk(left, right):
+    entries = build_qmk_layout(left, right)
+
     # "pretty print" each entry to own row
     json_blobs = map(json.dumps, entries)
     print("[\n  %s\n]" % ",\n  ".join(json_blobs))
+
+
+def get_split_switches(left_pcb, right_pcb):
+    global ENCODER_INDEX
+    ENCODER_INDEX = 0
+
+    left_switches = get_switches(left_pcb, Side.Left)
+    right_switches = get_switches(right_pcb, Side.Right)
+
+    right_start_row = max(map(lambda x: x.row, left_switches)) + 1
+    right_start_x = max(map(lambda x: x.x, left_switches)) + 4
+    for i in right_switches:
+        i.x += right_start_x
+        if i.kind == SwitchKind.Switch:
+            i.row += right_start_row
+
+    return left_switches, right_switches
 
 
 def main():
@@ -191,15 +220,7 @@ def main():
                         help="The path to the right side pcb")
     args = parser.parse_args()
 
-    left_switches = get_switches(args.left_pcb, Side.Left)
-    right_switches = get_switches(args.right_pcb, Side.Right)
-
-    right_start_row = max(map(lambda x: x.row, left_switches)) + 1
-    right_start_x = max(map(lambda x: x.x, left_switches)) + 4
-    for i in right_switches:
-        i.x += right_start_x
-        if i.kind == SwitchKind.Switch:
-            i.row += right_start_row
+    left_switches, right_switches = get_split_switches(args.left_pcb, args.right_pcb)
 
     if args.format == 'vial':
         output_vial(left_switches, right_switches)

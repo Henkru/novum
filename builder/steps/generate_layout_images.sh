@@ -9,7 +9,7 @@ log_info() {
     echo "${BLUE}[layout]${NC}: ${BOLD}$1${NC}"
 }
 
-REV=rev1
+REV=rev2
 set -- default vial
 
 mkdir -p out/novum/layout

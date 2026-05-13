@@ -36,6 +36,7 @@ if [ -d "out" ]; then
 fi
 
 ./builder/steps/generate.sh
+./builder/steps/update_qmk_jsons.sh
 ./builder/steps/add_design_rules.sh
 ./builder/steps/add_tracks.sh
 ./builder/steps/autoroute.sh
@@ -44,4 +45,3 @@ fi
 ./builder/steps/build_vial.sh
 
 log_info "\033[0;32m --- All Done ---\033[0m"
-
