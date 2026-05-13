@@ -1,6 +1,6 @@
 meta:
   engine: 4.1.0
-  version: 0.0.1
+  version: 2.0.0
   author: Henri Nurmi
 units:
   kx: u
@@ -19,16 +19,18 @@ units:
   arch_right_y: 20
   mcu_shift_x: kx + 2
   mcu_shift_y: -13.5
-  conn_cut_width: 18
+  conn_cut_width: 22
   conn_cut_shift_y: 9.6
   mounting_spacer_diameter: 3.1
   mounting_hole_diameter: 2.2
   trrs_shift_x: kx + 17
   trrs_shift_y: mcu_shift_y - 22.5
-  reset_shift_x: kx + 13.6
+  reset_shift_x: kx + 13
   reset_shfit_y: trrs_shift_y - 6.5
   tenting_puck_shift_y: -ky/2 - 5.6
   logo_shift_y: -16.25
+  zone_width: 10kx
+  zone_height: 8ky
 points:
   zones:
     matrix:
@@ -65,28 +67,45 @@ points:
     thumbs:
       key.tags: switch
       anchor:
-        ref: matrix_middle_bottom
+        ref: matrix_index_bottom
         shift: [0, -ky]
       columns:
         mod1:
-          key.column_net: COL1
+          key.column_net: COL0
+          rows:
+            cluster:
+              row_net: ROW4
         mod2:
-          key.stagger: index_stagger
-          key.column_net: COL2
-        layer:
           key:
             shift: [1.1, -5]
             rotate: -10
-          key.column_net: COL3
+          key.column_net: COL1
+          rows:
+            cluster:
+              row_net: ROW4
+        layer:
+          rows:
+            layer:
+              shift: [2.3, -11]
+              rotate: 67
+              padding: 0
+              column_net: COL2
+              row_net: ROW4
+              name: thumbs_layer_cluster
+            mod3:
+              shift: [-kx, 0]
+              column_net: COL3
+              row_net: ROW4
+              name: thumbs_mod3_cluster
         space:
           key:
             width: 1.5kx
-            rotate: 67
-            shift: [1, -14]
+            rotate: 64
+            shift: [-1.6, -26]
           key.column_net: COL4
-      rows:
-        cluster:
-          row_net: ROW4
+          rows:
+            cluster:
+              row_net: ROW4
     encoder:
       key.tags: encoder
       anchor:
@@ -128,6 +147,16 @@ points:
       anchor:
         ref: thumbs_space_cluster
         shift: [kx/2 + 2, ky/2 - 2]
+      columns:
+        c1:
+      rows:
+        r1:
+    mounting_space_left_bottom:
+      key:
+        tags: mount
+      anchor:
+        ref: thumbs_space_cluster
+        shift: [-0.75kx + 4, -0.5ky + 16]
       columns:
         c1:
       rows:
@@ -225,6 +254,264 @@ outlines:
       ~_left_arch_circle_right,
       ~_right_arch_circle_right,
     ]
+  # BEGIN GENERATED FUSION OUTLINE
+  _fusion_outline_left:
+    - what: polygon
+      points:
+        - shift: [41.349, -32.678]
+        - shift: [6.1952, 1.9628]
+        - shift: [6.3315, 1.8074]
+        - shift: [6.4729, 1.6502]
+        - shift: [6.624, 1.4883]
+        - shift: [6.79, 1.318]
+        - shift: [6.9765, 1.135]
+        - shift: [7.1894, 0.9345]
+        - shift: [7.4351, 0.7112]
+        - shift: [7.7191, 0.4603]
+        - shift: [8.0467, 0.177]
+        - shift: [8.4222, -0.1423]
+        - shift: [8.8482, -0.5005]
+        - shift: [9.3248, -0.898]
+        - shift: [9.8494, -1.3331]
+        - shift: [10.4154, -1.8009]
+        - shift: [11.0107, -2.2919]
+        - shift: [2.4631, -1.0323]
+        - shift: [2.0726, -1.1897]
+        - shift: [1.6946, -1.3548]
+        - shift: [1.3494, -1.5399]
+        - shift: [1.0678, -1.7634]
+        - shift: [0.8853, -2.0481]
+        - shift: [0.8101, -2.4229]
+        - shift: [0.8131, -2.917]
+        - shift: [0.8292, -3.5581]
+        - shift: [0.3903, -2.078]
+        - shift: [0.3425, -2.3113]
+        - shift: [0.2711, -2.5634]
+        - shift: [0.1827, -2.8239]
+        - shift: [0.0854, -3.0816]
+        - shift: [-0.0131, -3.3263]
+        - shift: [-0.1052, -3.5487]
+        - shift: [-0.1849, -3.741]
+        - shift: [-0.5361, -7.9078]
+        - shift: [-0.6042, -8.1809]
+        - shift: [-0.4617, -8.0673]
+        - shift: [-0.1099, -3.8684]
+        - shift: [0.0044, -3.696]
+        - shift: [0.1406, -3.4814]
+        - shift: [0.2951, -3.2295]
+        - shift: [0.4634, -2.9464]
+        - shift: [0.6399, -2.6395]
+        - shift: [0.8184, -2.317]
+        - shift: [0.9913, -1.9891]
+        - shift: [1.1498, -1.6676]
+        - shift: [1.284, -1.3656]
+        - shift: [1.3841, -1.096]
+        - shift: [1.441, -0.8713]
+        - shift: [2.8447, -1.2951]
+        - shift: [2.4335, -1.1092]
+        - shift: [0.946, -0.6199]
+        - shift: [0.7286, -0.705]
+        - shift: [0.5057, -0.7948]
+        - shift: [0.295, -0.8704]
+        - shift: [0.078, -1.85]
+        - shift: [-0.3921, -1.8642]
+        - shift: [-0.7318, -1.9794]
+        - shift: [-1.0239, -2.3029]
+        - shift: [-1.2731, -2.7278]
+        - shift: [-1.4815, -3.0967]
+        - shift: [-3.5017, -6.4785]
+        - shift: [-2.0697, -2.8368]
+        - shift: [-1.1591, -1.2026]
+        - shift: [-1.2709, -1.0252]
+        - shift: [-1.4063, -0.8303]
+        - shift: [-1.5625, -0.6243]
+        - shift: [-1.7321, -0.4124]
+        - shift: [-1.9049, -0.1988]
+        - shift: [-2.0719, 0.0125]
+        - shift: [-2.2266, 0.2179]
+        - shift: [-2.3646, 0.4141]
+        - shift: [-2.4819, 0.5984]
+        - shift: [-5.2158, 1.6913]
+        - shift: [-5.3632, 2.238]
+        - shift: [-5.2798, 2.6379]
+        - shift: [-4.9882, 2.8907]
+        - shift: [-4.5411, 3.0105]
+        - shift: [-4.0172, 3.0235]
+        - shift: [-3.4951, 2.9576]
+        - shift: [-3.0399, 2.8376]
+        - shift: [-2.7005, 2.6833]
+        - shift: [-2.5101, 2.5106]
+        - shift: [-2.4869, 2.331]
+        - shift: [-2.6332, 2.1516]
+        - shift: [-2.936, 1.9755]
+        - shift: [-3.3733, 1.8029]
+        - shift: [-3.9215, 1.6331]
+        - shift: [-4.5601, 1.4659]
+        - shift: [-5.2705, 1.3007]
+        - shift: [-2.9195, 0.589]
+        - shift: [-3.1167, 0.5483]
+        - shift: [-3.3186, 0.5078]
+        - shift: [-3.5245, 0.4674]
+        - shift: [-3.7337, 0.4271]
+        - shift: [-3.9455, 0.3869]
+        - shift: [-4.1594, 0.3469]
+        - shift: [-4.3749, 0.3068]
+        - shift: [-4.5916, 0.2669]
+        - shift: [-4.8091, 0.227]
+        - shift: [-5.0272, 0.1871]
+        - shift: [-5.2456, 0.1473]
+        - shift: [-5.4641, 0.1074]
+        - shift: [-5.6826, 0.0676]
+        - shift: [-0.4714, 0.0603]
+        - shift: [-0.4439, 0.1699]
+        - shift: [-0.3912, 0.2698]
+        - shift: [-0.3165, 0.3545]
+        - shift: [-0.224, 0.4192]
+        - shift: [-0.1187, 0.4602]
+        - shift: [-0.7526, 6.0371]
+        - shift: [-0.6029, 5.7656]
+        - shift: [-0.4612, 5.5084]
+        - shift: [-0.33, 5.2703]
+        - shift: [-0.2107, 5.0537]
+        - shift: [-0.1037, 4.8597]
+        - shift: [0.0647, 9.2255]
+        - shift: [0.355, 8.6986]
+        - shift: [0.5754, 8.2987]
+        - shift: [0.7481, 7.9853]
+        - shift: [0.8945, 7.7196]
+        - shift: [0.1059, 0.4356]
+        - shift: [0.2003, 0.4011]
+        - shift: [0.2846, 0.3464]
+        - shift: [0.3546, 0.2743]
+  _fusion_outline_right:
+    - what: polygon
+      points:
+        - shift: [363.558, -32.8664]
+        - shift: [0.3546, -0.2743]
+        - shift: [0.2846, -0.3464]
+        - shift: [0.2003, -0.4011]
+        - shift: [0.1059, -0.4356]
+        - shift: [0.8945, -7.7196]
+        - shift: [0.7481, -7.9853]
+        - shift: [0.5754, -8.2987]
+        - shift: [0.355, -8.6986]
+        - shift: [0.0647, -9.2255]
+        - shift: [-0.1037, -4.8597]
+        - shift: [-0.2107, -5.0537]
+        - shift: [-0.33, -5.2703]
+        - shift: [-0.4612, -5.5084]
+        - shift: [-0.6029, -5.7656]
+        - shift: [-0.7526, -6.0371]
+        - shift: [-0.1187, -0.4602]
+        - shift: [-0.224, -0.4192]
+        - shift: [-0.3165, -0.3545]
+        - shift: [-0.3912, -0.2698]
+        - shift: [-0.4439, -0.1699]
+        - shift: [-0.4714, -0.0603]
+        - shift: [-5.6826, -0.0676]
+        - shift: [-5.4641, -0.1074]
+        - shift: [-5.2456, -0.1473]
+        - shift: [-5.0272, -0.1871]
+        - shift: [-4.8091, -0.227]
+        - shift: [-4.5916, -0.2669]
+        - shift: [-4.3749, -0.3068]
+        - shift: [-4.1594, -0.3469]
+        - shift: [-3.9455, -0.3869]
+        - shift: [-3.7337, -0.4271]
+        - shift: [-3.5245, -0.4674]
+        - shift: [-3.3186, -0.5078]
+        - shift: [-3.1167, -0.5483]
+        - shift: [-2.9195, -0.589]
+        - shift: [-5.2705, -1.3007]
+        - shift: [-4.5601, -1.4659]
+        - shift: [-3.9215, -1.6331]
+        - shift: [-3.3733, -1.8029]
+        - shift: [-2.936, -1.9755]
+        - shift: [-2.6332, -2.1516]
+        - shift: [-2.4869, -2.331]
+        - shift: [-2.5101, -2.5106]
+        - shift: [-2.7005, -2.6833]
+        - shift: [-3.0399, -2.8376]
+        - shift: [-3.4951, -2.9576]
+        - shift: [-4.0172, -3.0235]
+        - shift: [-4.5411, -3.0105]
+        - shift: [-4.9882, -2.8907]
+        - shift: [-5.2798, -2.6379]
+        - shift: [-5.3632, -2.238]
+        - shift: [-5.2158, -1.6913]
+        - shift: [-2.4819, -0.5984]
+        - shift: [-2.3646, -0.4141]
+        - shift: [-2.2266, -0.2179]
+        - shift: [-2.0719, -0.0125]
+        - shift: [-1.9049, 0.1988]
+        - shift: [-1.7321, 0.4124]
+        - shift: [-1.5625, 0.6243]
+        - shift: [-1.4063, 0.8303]
+        - shift: [-1.2709, 1.0252]
+        - shift: [-1.1591, 1.2026]
+        - shift: [-2.0697, 2.8368]
+        - shift: [-3.5017, 6.4785]
+        - shift: [-1.4815, 3.0967]
+        - shift: [-1.2731, 2.7278]
+        - shift: [-1.0239, 2.3029]
+        - shift: [-0.7318, 1.9794]
+        - shift: [-0.3921, 1.8642]
+        - shift: [0.078, 1.85]
+        - shift: [0.295, 0.8704]
+        - shift: [0.5057, 0.7948]
+        - shift: [0.7286, 0.705]
+        - shift: [0.946, 0.6199]
+        - shift: [2.4335, 1.1092]
+        - shift: [2.8447, 1.2951]
+        - shift: [1.441, 0.8713]
+        - shift: [1.3841, 1.096]
+        - shift: [1.284, 1.3656]
+        - shift: [1.1498, 1.6676]
+        - shift: [0.9913, 1.9891]
+        - shift: [0.8184, 2.317]
+        - shift: [0.6399, 2.6395]
+        - shift: [0.4634, 2.9464]
+        - shift: [0.2951, 3.2295]
+        - shift: [0.1406, 3.4814]
+        - shift: [0.0044, 3.696]
+        - shift: [-0.1099, 3.8684]
+        - shift: [-0.4617, 8.0673]
+        - shift: [-0.6042, 8.1809]
+        - shift: [-0.5361, 7.9078]
+        - shift: [-0.1849, 3.741]
+        - shift: [-0.1052, 3.5487]
+        - shift: [-0.0131, 3.3263]
+        - shift: [0.0854, 3.0816]
+        - shift: [0.1827, 2.8239]
+        - shift: [0.2711, 2.5634]
+        - shift: [0.3425, 2.3113]
+        - shift: [0.3903, 2.078]
+        - shift: [0.8292, 3.5581]
+        - shift: [0.8131, 2.917]
+        - shift: [0.8101, 2.4229]
+        - shift: [0.8853, 2.0481]
+        - shift: [1.0678, 1.7634]
+        - shift: [1.3494, 1.5399]
+        - shift: [1.6946, 1.3548]
+        - shift: [2.0726, 1.1897]
+        - shift: [2.4631, 1.0323]
+        - shift: [11.0107, 2.2919]
+        - shift: [10.4154, 1.8009]
+        - shift: [9.8494, 1.3331]
+        - shift: [9.3248, 0.898]
+        - shift: [8.8482, 0.5005]
+        - shift: [8.4222, 0.1423]
+        - shift: [8.0467, -0.177]
+        - shift: [7.7191, -0.4603]
+        - shift: [7.4351, -0.7112]
+        - shift: [7.1894, -0.9345]
+        - shift: [6.9765, -1.135]
+        - shift: [6.79, -1.318]
+        - shift: [6.624, -1.4883]
+        - shift: [6.4729, -1.6502]
+        - shift: [6.3315, -1.8074]
+        - shift: [6.1952, -1.9628]
+  # END GENERATED FUSION OUTLINE
   # Mounting holes
   _mounting_holes:
     - what: circle
@@ -240,22 +527,15 @@ outlines:
   # Board outlines
   board_outline_left:
     - what: outline
-      name: _arches_left
-      fillet: 3
+      name: _fusion_outline_left
   board_outline_right:
     - what: outline
-      name: _arches_right
-      fillet: 3
-  board_left:
-    [ board_outline_left, -_mounting_holes]
-  board_right:
-    [ board_outline_right, -_mounting_holes]
-  board_pcb_left:
-    [ board_outline_left, -_conn_cut_left]
-  board_pcb_right:
-    [ board_outline_right, -_conn_cut_right]
-  board_tenting_puck_left:
-    [ board_outline_left, -_tenting_puck]
+      name: _fusion_outline_right
+  board_left: [board_outline_left, -_mounting_holes]
+  board_right: [board_outline_right, -_mounting_holes]
+  board_pcb_left: [board_outline_left, -_conn_cut_left]
+  board_pcb_right: [board_outline_right, -_conn_cut_right]
+  board_tenting_puck_left: [board_outline_left, -_tenting_puck]
   # Switch plate
   _switch_cutouts:
     - what: rectangle
@@ -269,10 +549,11 @@ outlines:
       where:
         ref: matrix_inner_home
         shift: [0.5kx + 30/2 + 0.5, -0.5ky + 60/2 + 0.5]
-  switch_plate:
-    [board_outline_left, -_switch_cutouts, -_mcu_cutout]
-  switch_plate_with_mouting:
-    [switch_plate, -_mounting_holes]
+  switch_plate: [board_outline_left, -_switch_cutouts, -_mcu_cutout]
+  switch_plate_without_mcu_cutout: [board_outline_left, -_switch_cutouts]
+  switch_plate_with_mouting: [switch_plate, -_mounting_holes]
+  switch_plate_without_mcu_cutout_with_mouting:
+    [switch_plate_without_mcu_cutout, -_mounting_holes]
   # Debug outlines
   _debug:
     - name: board_left
@@ -304,7 +585,7 @@ pcbs:
         where: [[-/^mirror_.*/, [switch, encoder]]]
         asym: source
         adjust:
-          shift: [ 0, 4.5 ]
+          shift: [0, 4.5]
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
@@ -330,18 +611,18 @@ pcbs:
           P20: VCC # Left side indicator
           P21: ROW0
           P19: ROW1
-          P6:  ROW2
-          P7:  ROW3
-          P8:  ROW4
-          P9:  COL0
+          P6: ROW2
+          P7: ROW3
+          P8: ROW4
+          P9: COL0
           P18: COL1
           P15: COL2
           P14: COL3
           P16: COL4
           P10: COL5
-          P5:  ENC1_A
-          P4:  ENC1_B
-          P0:  DATA
+          P5: ENC1_A
+          P4: ENC1_B
+          P0: DATA
       trrs:
         what: trrs
         where:
@@ -352,7 +633,7 @@ pcbs:
           A: VCC
           B: DATA
           C: GND
-          D: ''
+          D: ""
       reset:
         what: reset_button
         where:
@@ -367,8 +648,8 @@ pcbs:
         params:
           net: VCC
           side: F
-          width: 8.5kx
-          height: 6.5ky
+          width: zone_width
+          height: zone_height
       zone_back:
         what: zone
         where:
@@ -377,8 +658,8 @@ pcbs:
         params:
           net: GND
           side: B
-          width: 8.5kx
-          height: 6.5ky
+          width: zone_width
+          height: zone_height
       mounting:
         what: mounting_hole_plated
         where: [[-/^mirror_.*/, mount]]
@@ -404,7 +685,7 @@ pcbs:
         what: logo
         where:
           ref: matrix_ring_bottom
-          shift: [0, logo_shift_y]
+          shift: [19, logo_shift_y]
   right:
     template: kicad8
     outlines:
@@ -426,7 +707,7 @@ pcbs:
         where: [[/^mirror_.*/, [switch, encoder]]]
         asym: source
         adjust:
-          shift: [ 0, 4.5 ]
+          shift: [0, 4.5]
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
@@ -450,20 +731,20 @@ pcbs:
         params:
           orientation: down
           P20: GND # Right side indicator
-          P3:  ROW0
-          P4:  ROW1
+          P3: ROW0
+          P4: ROW1
           P14: ROW2
           P16: ROW3
           P10: ROW4
-          P2:  COL0
-          P5:  COL1
-          P6:  COL2
-          P7:  COL3
-          P8:  COL4
-          P9:  COL5
+          P2: COL0
+          P5: COL1
+          P6: COL2
+          P7: COL3
+          P8: COL4
+          P9: COL5
           P18: ENC1_A
           P19: ENC1_B
-          P0:  DATA
+          P0: DATA
       trrs:
         what: trrs
         where:
@@ -474,7 +755,7 @@ pcbs:
           A: VCC
           B: DATA
           C: GND
-          D: ''
+          D: ""
       reset:
         what: reset_button
         where:
@@ -489,8 +770,8 @@ pcbs:
         params:
           net: VCC
           side: F
-          width: -8.5kx
-          height: 6.5ky
+          width: -zone_width
+          height: zone_height
       zone_back:
         what: zone
         where:
@@ -499,8 +780,8 @@ pcbs:
         params:
           net: GND
           side: B
-          width: -8.5kx
-          height: 6.5ky
+          width: -zone_width
+          height: zone_height
       mounting:
         what: mounting_hole_plated
         where: [[/^mirror_.*/, mount]]
@@ -526,13 +807,13 @@ pcbs:
         what: logo
         where:
           ref: mirror_matrix_ring_bottom
-          shift: [0, logo_shift_y]
+          shift: [19, logo_shift_y]
   switch_plate:
     template: kicad8
     outlines:
       main:
         outline: switch_plate
-    footprints:
+    footprints: &switch_plate_footprints
       mounting:
         what: mounting_hole_npth
         where: [[-/^mirror_.*/, mount]]
@@ -563,20 +844,26 @@ pcbs:
           ref: matrix_outer_num
           shift: [-1kx, 1.2ky]
         params:
-          net: ''
+          net: ""
           side: F
-          width: 8.5kx
-          height: 6.5ky
+          width: zone_width
+          height: zone_height
       zone_back:
         what: zone
         where:
           ref: matrix_outer_num
           shift: [-1kx, 1.2ky]
         params:
-          net: ''
+          net: ""
           side: B
-          width: 8.5kx
-          height: 6.5ky
+          width: zone_width
+          height: zone_height
+  switch_plate_without_mcu_cutout:
+    template: kicad8
+    outlines:
+      main:
+        outline: switch_plate_without_mcu_cutout
+    footprints: *switch_plate_footprints
   bottom_board_with_art:
     template: kicad8
     outlines:
@@ -638,20 +925,20 @@ pcbs:
           ref: matrix_outer_num
           shift: [-1kx, 1.2ky]
         params:
-          net: ''
+          net: ""
           side: F
-          width: 8.5kx
-          height: 6.5ky
+          width: zone_width
+          height: zone_height
       zone_back:
         what: zone
         where:
           ref: matrix_outer_num
           shift: [-1kx, 1.2ky]
         params:
-          net: ''
+          net: ""
           side: B
-          width: 8.5kx
-          height: 6.5ky
+          width: zone_width
+          height: zone_height
   bottom_board_empty:
     template: kicad8
     outlines:

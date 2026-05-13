@@ -9,7 +9,7 @@ log_info() {
     echo "${BLUE}[plot]${NC}: ${BOLD}$1${NC}"
 }
 
-set -- left right switch_plate bottom_board_empty bottom_board_with_tenting_puck
+set -- left right switch_plate switch_plate_without_mcu_cutout bottom_board_empty bottom_board_with_tenting_puck
 
 for BOARD in "$@"; do
     log_info "Generating gerbers and images: $BOARD"

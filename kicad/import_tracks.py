@@ -10,8 +10,22 @@ Usage: import_tracks.py <board_file> <track_file>
 """
 
 
+class TrackImportError(Exception):
+    pass
+
+
 def vec(x, y):
     return pcbnew.VECTOR2I(x, y)
+
+
+def get_net_code(board, netname, board_file, track_file, kind, index):
+    try:
+        return board.GetNetcodeFromNetname(netname)
+    except (IndexError, KeyError):
+        raise TrackImportError(
+            f"{track_file}: {kind} #{index} references missing net "
+            f"{netname!r} in {board_file}"
+        ) from None
 
 
 def main(argv):
@@ -20,25 +34,41 @@ def main(argv):
     tracks = json.load(open(track_file, 'r'))
     board = pcbnew.LoadBoard(board_file)
 
-    for info in tracks['tracks']:
+    for index, info in enumerate(tracks['tracks'], start=1):
         track = pcbnew.PCB_TRACK(board)
-        track.SetNetCode(board.GetNetcodeFromNetname(info[0]))
-        track.SetStart(vec(info[1], info[2]))
-        track.SetEnd(vec(info[3], info[4]))
-        track.SetWidth(info[5])
-        track.SetLayer(info[6])
-        board.Add(track)
+        try:
+            track.SetNetCode(
+                get_net_code(board, info[0], board_file, track_file, "track", index)
+            )
+            track.SetStart(vec(info[1], info[2]))
+            track.SetEnd(vec(info[3], info[4]))
+            track.SetWidth(info[5])
+            track.SetLayer(info[6])
+            board.Add(track)
+        except TrackImportError as e:
+            print(e)
+            continue
 
-    for info in tracks['vias']:
-        pcb_via = pcbnew.PCB_VIA(board)
-        pcb_via.SetNetCode(board.GetNetcodeFromNetname(info[0]))
-        pcb_via.SetPosition(vec(info[1], info[2]))
-        pcb_via.SetWidth(info[3])
-        pcb_via.SetDrill(info[4])
-        board.Add(pcb_via)
+    for index, info in enumerate(tracks['vias'], start=1):
+        try:
+            pcb_via = pcbnew.PCB_VIA(board)
+            pcb_via.SetNetCode(
+                get_net_code(board, info[0], board_file, track_file, "via", index)
+            )
+            pcb_via.SetPosition(vec(info[1], info[2]))
+            pcb_via.SetWidth(info[3])
+            pcb_via.SetDrill(info[4])
+            board.Add(pcb_via)
+        except TrackImportError as e:
+            print(e)
+            continue
 
     board.Save(board_file)
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    try:
+        main(sys.argv[1:])
+    except TrackImportError as error:
+        print(f"error: {error}", file=sys.stderr)
+        sys.exit(1)
