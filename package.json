@@ -3,9 +3,10 @@
   "version": "1.1.0",
   "description": "Novum Split Keyboard",
   "scripts": {
-    "generate": "ergogen novum/ergogen -o out/novum",
+    "generate": "./novum/art/update_ergogen_artwork.py && ergogen novum/ergogen -o out/novum",
     "build-builder": "docker build --platform linux/amd64 -t henkru/ergo-builder:latest builder",
     "update-outline": "./novum/outline/update_config_from_dxf.py",
+    "update-artwork": "./novum/art/update_ergogen_artwork.py",
     "update-qmk-jsons": "./builder/steps/update_qmk_jsons.sh",
     "export-tracks-left": "./kicad/export_tracks.py out/novum/pcbs/left.kicad_pcb > novum/kicad/left.json",
     "export-tracks-right": "./kicad/export_tracks.py out/novum/pcbs/right.kicad_pcb > novum/kicad/right.json",

@@ -18,5 +18,5 @@ done
 
 if [ "$SKIP_BOTTOM_WITH_ART" != "true" ]; then
     log_info "Generating gerbers and images: bottom_board_with_art"
-    #$DOCKER_CMD kibot -b "out/novum/pcbs/bottom_board_with_art.kicad_pcb" -c novum/kibot/bottom.yml
+    $DOCKER_CMD kibot -b "out/novum/pcbs/bottom_board_with_art.kicad_pcb" -c novum/kibot/bottom.yml
 fi

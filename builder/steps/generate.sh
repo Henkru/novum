@@ -22,4 +22,5 @@ log_info "Installing depedencies"
 npm install
 
 log_info "Genarating unrouted PCBs"
+npm run update-artwork
 NOVUM_VERSION=$NOVUM_VERSION npm run generate
