@@ -685,7 +685,7 @@ pcbs:
         what: logo
         where:
           ref: matrix_ring_bottom
-          shift: [19, logo_shift_y]
+          shift: [18, logo_shift_y]
   right:
     template: kicad8
     outlines:
@@ -807,7 +807,7 @@ pcbs:
         what: logo
         where:
           ref: mirror_matrix_ring_bottom
-          shift: [19, logo_shift_y]
+          shift: [18, logo_shift_y]
   switch_plate:
     template: kicad8
     outlines:
