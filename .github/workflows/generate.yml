@@ -50,31 +50,20 @@ jobs:
               body: 'Here is your ⌨️: ${{steps.build.outputs.artifact-url}}'
             })
 
-      - name: Prepare PCB preview images
-        if: github.event_name == 'pull_request'
-        shell: bash
-        run: |
-          set -e
-          mkdir -p out/novum/preview-images
-          cp out/novum/images/left-*.png out/novum/preview-images/
-          cp out/novum/images/right-*.png out/novum/preview-images/
-          cp out/novum/images/switch_plate-*.png out/novum/preview-images/
-          cp out/novum/images/bottom_board_empty-*.png out/novum/preview-images/
-          cp out/novum/images/bottom_board_with_tenting_puck-*.png out/novum/preview-images/
-          cp out/novum/images/bottom_board_with_art-*.png out/novum/preview-images/ 2>/dev/null || true
-
       - name: Upload PCB images
         if: github.event_name == 'pull_request'
-        uses: Henkru/actions-image@b9c6f801c0164289ab059309b06b8d0bcdb13b88
+        uses: Henkru/actions-image@9719236bedae12d57ac217bce599caeffcf17a8f
         with:
           title: "🧩 PCBs"
-          path: ./out/novum/preview-images/*.png
+          checksName: "PCBs"
+          path: ./out/novum/images/*.png
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload keymap images
         if: github.event_name == 'pull_request'
-        uses: Henkru/actions-image@b9c6f801c0164289ab059309b06b8d0bcdb13b88
+        uses: Henkru/actions-image@9719236bedae12d57ac217bce599caeffcf17a8f
         with:
           title: "🧩 Keymaps"
+          checksName: "Keymaps"
           path: ./out/novum/layout/*.svg
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
