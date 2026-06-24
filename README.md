@@ -3,8 +3,6 @@
 The split keyboard for me (it may not be for you).
 
 ![Novum keyboard](/docs/images/novum.jpg)
-![Novum keyboard](/docs/images/novum_side.jpg)
-![Novum keyboard](/docs/images/novum_cables.jpg)
 
 ## Background
 
