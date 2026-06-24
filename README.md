@@ -4,6 +4,8 @@ The split keyboard for me (it may not be for you).
 
 ![Novum keyboard](/docs/images/novum.jpg)
 
+If you are looking the rev1, you can find it [here](https://github.com/Henkru/novum/tree/b939535702458b90af53e7baded4479459054762).
+
 ## Background
 
 I began my split keyboard journey with the [Lily58](https://github.com/kata0510/Lily58),
