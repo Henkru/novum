@@ -1,6 +1,6 @@
 {
   "name": "novum",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Novum Split Keyboard",
   "scripts": {
     "generate": "./novum/art/update_ergogen_artwork.py && ergogen novum/ergogen -o out/novum",
